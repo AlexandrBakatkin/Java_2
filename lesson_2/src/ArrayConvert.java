@@ -4,6 +4,7 @@ public class ArrayConvert {
 
     public ArrayConvert(String[][] strArray) {
         this.strArray = strArray;
+
         if (strArray.length != 4 || strArray[0].length != 4){
             throw new MySizeArrayException("Массив иного размера, чем 4 х 4");
         }
