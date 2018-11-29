@@ -17,9 +17,16 @@ public class MainClass {
         arrString.add("100");
 
         ModArray modArray = new ModArray(arrString);
+        modArray.printArray();
+        System.out.println();
         System.out.println("Уникальные слова в массиве: " + modArray.uniqueWords());
+        System.out.println();
+        System.out.println("Считаем сколько раз каждое слово встречается в массиве. Способ 1");
         System.out.println(modArray.howManyTimes());
-
+        System.out.println();
+        System.out.println("Считаем сколько раз каждое слово встречается в массиве. Способ 2");
+        modArray.howManyTimesBetter();
+        System.out.println();
         System.out.println("_________Телефонный справочник___________");
 
         PhoneBook phoneBook = new PhoneBook();
