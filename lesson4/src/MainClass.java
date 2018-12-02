@@ -6,7 +6,7 @@ public class MainClass {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new MyWindows();
+                new MyChatWindow();
             }
         });
 
