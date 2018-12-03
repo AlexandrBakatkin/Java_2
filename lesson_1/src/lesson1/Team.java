@@ -7,11 +7,10 @@ public class Team {
     private Competitor [] team;
     boolean start;                  //Для проверки - проходила ли команда полосу препятствий хоть один раз
 
-    public Team(String name, Competitor competitor1, Competitor competitor2, Competitor competitor3, Competitor competitor4) {
+    public Team(String name, Competitor [] competitor) {
         this.name = name;
         this.start = false;
-        Competitor[] t = {competitor1, competitor2, competitor3, competitor4};
-        this.team = t;
+        this.team = competitor;
     }
 
     public void showResult (){
