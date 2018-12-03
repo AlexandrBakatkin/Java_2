@@ -39,6 +39,10 @@ public class MyChatWindow extends JFrame {
         String data;
         Date date = new Date();
         data = date.toString();
+        if (jTextField.getText().equals("")){
+            jTextField.grabFocus();
+            return;
+        }
         textArea.append(data + " - Пользователь1: " + "\n");
         textArea.append(jTextField.getText() + "\n");
         textArea.append("\n");
