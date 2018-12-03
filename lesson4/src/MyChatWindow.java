@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 
 public class MyChatWindow extends JFrame {
     private JTextField jTextField;
@@ -11,37 +12,36 @@ public class MyChatWindow extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("Chat");
         setBounds(500, 200, 500, 300);
+        JPanel panelMain = new JPanel(new BorderLayout());
+        JPanel panelDown = new JPanel(new BorderLayout());
 
         JButton jbEnter = new JButton("Enter");
-        add(jbEnter, BorderLayout.SOUTH);
-
-        jTextField = new JTextField();
         textArea = new JTextArea();
         textArea.setFocusable(false);
-        add(textArea);
+        textArea.setLineWrap(true);
+        jTextField = new JTextField();
+        JScrollPane scrollPane = new JScrollPane(textArea);
 
-        add(jTextField, BorderLayout.NORTH);
+        jbEnter.addActionListener(e -> sendMsg());
+        jTextField.addActionListener(e -> sendMsg());
 
-        jbEnter.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                sendMsg();
-            }
-        });
-
-        jTextField.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                sendMsg();
-            }
-        });
-
+        panelMain.add(scrollPane, BorderLayout.CENTER);
+        panelDown.add(jTextField, BorderLayout.CENTER);
+        panelDown.add(jbEnter, BorderLayout.LINE_END);
+        panelMain.add(panelDown, BorderLayout.SOUTH);
+        Container container = getContentPane();
+        container.add(panelMain);
 
         setVisible(true);
     }
 
     public void sendMsg(){
+        String data;
+        Date date = new Date();
+        data = date.toString();
+        textArea.append(data + " - Пользователь1: " + "\n");
         textArea.append(jTextField.getText() + "\n");
+        textArea.append("\n");
         jTextField.setText("");
         jTextField.grabFocus();
     }
