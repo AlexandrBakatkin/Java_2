@@ -23,11 +23,8 @@ public class DoubleTaskArray {
         arrThread1.start();
         arrThread2.start();
 
-
-        System.arraycopy(arrThread1.getArr(), 0, arr, 0, h);
-        System.arraycopy(arrThread2.getArr(), 0, arr, h, h);
-
-        System.out.println(arr[1000000]);
+        System.arraycopy(arr1, 0, arr, 0, h);
+        System.arraycopy(arr2, 0, arr, h, h);
 
 
         System.out.println("Время выполнения задачи в двух потоках:");

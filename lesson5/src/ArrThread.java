@@ -5,10 +5,6 @@ public class ArrThread extends Thread {
         this.arrThread = arrThread;
     }
 
-    public float[] getArr() {
-        return arrThread;
-    }
-
     @Override
     public void run() {
         for (int i = 0; i < arrThread.length; i++) {
