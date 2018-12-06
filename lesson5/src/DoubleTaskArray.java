@@ -11,7 +11,7 @@ public class DoubleTaskArray {
         }
     }
 
-    public void StartArray(){
+    public void StartArray() throws InterruptedException {
         long a = System.currentTimeMillis();
 
         System.arraycopy(arr, 0, arr1, 0, h);
@@ -22,9 +22,12 @@ public class DoubleTaskArray {
         ArrThread arrThread2 = new ArrThread(arr2);
         arrThread1.start();
         arrThread2.start();
+        arrThread1.join();
+        arrThread2.join();
 
         System.arraycopy(arr1, 0, arr, 0, h);
         System.arraycopy(arr2, 0, arr, h, h);
+
 
 
         System.out.println("Время выполнения задачи в двух потоках:");
