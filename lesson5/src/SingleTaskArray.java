@@ -1,11 +1,15 @@
 public class SingleTaskArray {
     static final int size = 10000000;
-    float[] arr = new float[size];
+    private float[] arr = new float[size];
 
     public SingleTaskArray() {
         for (int i = 0; i < size; i++) {
             arr[i] = 1;
         }
+    }
+
+    public void StartArray(){
+
         long a = System.currentTimeMillis();
 
         for (int i = 0; i < size; i++) {
