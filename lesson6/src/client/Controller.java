@@ -35,7 +35,11 @@ public class Controller {
                                    if(s.equals("/end")){
                                        break;
                                    }
-                               System.out.println("From server: " + s);
+                                if (!s.contains("echo")){
+                                    System.out.println("From server: " + s);
+                                } else {
+                                    System.out.println(s);
+                                }
 
                                }
                            }
