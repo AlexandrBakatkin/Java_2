@@ -9,9 +9,8 @@ import lesson1.obstacles.Water;
 public class MainClass {
     public static void main(String[] args) {
 
-        //Competitor[] competitors = {new Human("Боб"), new Cat("Барсик"), new Dog("Бобик"), new Cat ("Пушистик"), new Dog ("Рэкс")};
+        Competitor[] competitors = {new Human("Боб"), new Cat("Барсик"), new Dog("Бобик"), new Cat ("Пушистик"), new Dog ("Рэкс")};
         Obstacle[] obstacles = {new Cross(400), new Wall(2), new Water(1)};
-        Cat cat = new Cat ("Пушок");
 
 
        /* for (Competitor c : competitors) {
@@ -26,8 +25,10 @@ public class MainClass {
             c.showResult();
         }*/
 
-       Team team = new Team("DINAMO", new Human("Боб"), new Cat("Барсик"), new Dog("Бобик"), new Cat ("Пушистик"));
-       Course course = new Course(obstacles);
+       //Team team = new Team("DINAMO", new Human("Боб"), new Cat("Барсик"), new Dog("Бобик"), new Cat ("Пушистик"));
+        //
+        Team team = new Team("Динамо", competitors);
+        Course course = new Course(obstacles);
 
         team.teamInfo();        //общая информация о команде
         System.out.println("____________________");
