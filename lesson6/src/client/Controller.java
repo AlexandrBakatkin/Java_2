@@ -29,9 +29,15 @@ public class Controller {
 
                        try {
                            while (true){
+
                                if(inputStream.hasNext()){
-                               String s = inputStream.nextLine();
-                               System.out.println("From server: " + s);}
+                                   String s = inputStream.nextLine();
+                                   if(s.equals("/end")){
+                                       break;
+                                   }
+                               System.out.println("From server: " + s);
+
+                               }
                            }
                        } finally {
                            try {
@@ -55,8 +61,7 @@ public class Controller {
                        } catch (IOException e) {
                            e.printStackTrace();
                        }
-                       System.out.println(str);
-                       outputStream.println("Клиент пишет: " + str);
+                       outputStream.println(str);
                    }
                }
            });

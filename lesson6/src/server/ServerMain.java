@@ -30,7 +30,10 @@ public class ServerMain {
                         String msg = inputStr.nextLine();
                         System.out.println("From client: " + msg);
                         outputStr.println("echo: " + msg);
-                        if (msg.equals("/end")) break;}
+                        if (msg.equals("/end")) {
+                            outputStr.println("/end");
+                            break;
+                        }}
                     }
                 }
             });
