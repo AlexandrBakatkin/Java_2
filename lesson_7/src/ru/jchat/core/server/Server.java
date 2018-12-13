@@ -78,10 +78,24 @@ public class Server {
         return str.toString();
     }
 
-    public void privateMsgEcho(String msg, String nick) {
+    public boolean isExistNick(String nick){
         for (ClientHandler o: clients) {
-            if (o.getNick().equals(nick)){
-                o.sendMsg(nick + ": " + "Private message to " + getNick(msg) + ": " + msg);
+            if(o.getNick().equals(nick)) return true;
+        } return false;
+    }
+
+    public void privateMsgEcho(String msg, String nick) {
+        if (isExistNick(getNick(msg))){
+            for (ClientHandler o: clients) {
+                if (o.getNick().equals(nick)){
+                    o.sendMsg(nick + ": " + "Private message to " + getNick(msg) + ": " + msg);
+                }
+            }
+        } else {
+            for (ClientHandler o: clients) {
+                if (o.getNick().equals(nick)){
+                    o.sendMsg("User with nick '" + getNick(msg) + "'" + " don't exist");
+                }
             }
         }
     }
