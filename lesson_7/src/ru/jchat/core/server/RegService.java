@@ -13,10 +13,8 @@ public class RegService {
     }
 
     public boolean registration(String login, String password) throws SQLException {
-            ResultSet rs = statement.executeQuery("INSERT INTO ");
-            if (rs == null) {
-                return true;
-            } else return false;
+            ResultSet rs = statement.executeQuery("INSERT INTO users (login, password, nick) VALUES ('" + login + "', '" + password + "', '" + login + "')");
+            return true;
     }
 
     public void disconnect(){
