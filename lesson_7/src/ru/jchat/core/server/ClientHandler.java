@@ -7,6 +7,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.sql.SQLException;
 
 public class ClientHandler {
     private Server server;
@@ -43,6 +44,29 @@ public class ClientHandler {
                                 }
                             } else {
                                 sendMsg("Неверный логин/пароль");
+                            }
+                        }
+                        if (msg.startsWith("/reg ")){
+                            String [] data = msg.split("\\s");
+                            RegService regService = new RegService();
+
+                            try {
+                                regService.connect();
+                            } catch (ClassNotFoundException e) {
+                                System.out.println("Не удалось запустить сервис регистрации");
+                            } catch (SQLException e) {
+                                e.printStackTrace();
+                            } finally {
+                                regService.disconnect();
+                            }
+                            try {
+                                if (regService.registration(data[1], data[2])){
+                                    sendMsg("Регистрация прошла успешно, залогиньтесь");
+                                } else {
+                                    sendMsg("Регистрация не удалась");
+                                }
+                            } catch (SQLException e) {
+                                e.printStackTrace();
                             }
                         }
                     }

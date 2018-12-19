@@ -3,10 +3,7 @@ package ru.jchat.core.client;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 
 import java.io.DataInputStream;
@@ -17,6 +14,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable{
+    @FXML
+    Label textAreaUp;
+    @FXML
+    Label textAreaMiddle;
     @FXML
     TextArea textArea;
     @FXML
@@ -29,6 +30,10 @@ public class Controller implements Initializable{
     TextField loginField;
     @FXML
     PasswordField passField;
+    @FXML
+    TextField regLoginField;
+    @FXML
+    PasswordField regPassField;
 
     private Socket socket;
     private DataOutputStream out;
@@ -104,6 +109,18 @@ public class Controller implements Initializable{
             out.writeUTF("/auth " + loginField.getText() + " " + passField.getText());
             loginField.clear();
             passField.clear();
+        } catch (IOException e) {
+            showAlert("Не удалось подключиться к серверу. Проверьте сетевое соединение");
+        }
+    }
+
+    public void sendRegMsg() throws IOException {
+        if (socket == null || socket.isClosed()){
+            connect();
+        }
+        try {
+            out.writeUTF("/reg " + regLoginField.getText() + " " + regPassField.getText());
+
         } catch (IOException e) {
             showAlert("Не удалось подключиться к серверу. Проверьте сетевое соединение");
         }

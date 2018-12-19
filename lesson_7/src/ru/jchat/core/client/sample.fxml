@@ -4,12 +4,22 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+<?import javafx.scene.control.Label?>
 <VBox fx:controller="ru.jchat.core.client.Controller"
       xmlns:fx="http://javafx.com/fxml" alignment="center">
+    <Label fx:id="textAreaUp" text="Если вы зарегистрированы, просто введите логин/пароль"/>
     <HBox fx:id="authPanel">
         <TextField fx:id="loginField" promptText="Логин" HBox.hgrow="ALWAYS"/>
-        <PasswordField fx:id="passField" promptText="Пароль" onAction="#sendAuthMsg"/>
+        <PasswordField fx:id="passField" promptText="Пароль" HBox.hgrow="ALWAYS" onAction="#sendAuthMsg"/>
         <Button text="Авторизоваться" onAction="#sendAuthMsg"/>
+    </HBox>
+    <Label fx:id="textAreaMiddle" text="Если нет регистрации, придумайте уникальный логин/пароль"/>
+    <HBox fx:id="regPanel">
+        <TextField fx:id="regLoginField" promptText="Логин" HBox.hgrow="ALWAYS"/>
+        <PasswordField fx:id="regPassField" promptText="Пароль" HBox.hgrow="ALWAYS" onAction="#sendRegMsg"/>
+        <Button text="Регистрация" onAction="#sendRegMsg"/>
     </HBox>
     <TextArea fx:id="textArea" editable="false" VBox.vgrow="ALWAYS"/>
     <HBox fx:id="msgPanel">
